@@ -10,7 +10,7 @@ plugins {
 }
 
 group = 'm7011e.the-homeric-odyssey'
-version = '0.0.1'
+version = "0.0.1-SNAPSHOT"
 
 java {
     toolchain {
@@ -27,7 +27,7 @@ configurations {
 repositories {
     mavenCentral()
     maven {
-        url ("${reposiliteUrl}/release")
+        url reposiliteUrl
         name "Reposilite"
         credentials(PasswordCredentials) {
             username = reposiliteUser
@@ -43,11 +43,10 @@ publishing {
     repositories {
         maven {
             if(project.version.endsWith('-SNAPSHOT')) {
-                url ("${reposiliteUrl}/snapshot")
+                url ("${reposiliteUrl}/snapshots")
             } else {
-                url ("${reposiliteUrl}/release")
+                url ("${reposiliteUrl}/releases")
             }
-
             name "Reposilite"
             credentials(PasswordCredentials) {
                 username = reposiliteUser
