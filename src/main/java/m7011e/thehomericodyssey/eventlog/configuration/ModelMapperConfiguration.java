@@ -6,8 +6,8 @@ import m7011e.thehomericodyssey.eventlogmodels.models.VendorEvent;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import orm.MetaDataDb;
-import orm.VendorEventDb;
+import m7011e.thehomericodyssey.eventlog.orm.MetaDataDb;
+import m7011e.thehomericodyssey.eventlog.orm.VendorEventDb;
 
 @Configuration
 public class ModelMapperConfiguration {

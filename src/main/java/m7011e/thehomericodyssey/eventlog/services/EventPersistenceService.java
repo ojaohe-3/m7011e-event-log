@@ -5,7 +5,7 @@ import m7011e.thehomericodyssey.eventlog.repositories.VendorEventRepository;
 import m7011e.thehomericodyssey.eventlogmodels.models.VendorEvent;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import orm.VendorEventDb;
+import m7011e.thehomericodyssey.eventlog.orm.VendorEventDb;
 
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package orm;
+package m7011e.thehomericodyssey.eventlog.orm;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
