@@ -1,0 +1,4 @@
+rootProject.name = 'event-log'
+include "event-log-models"
+include 'event-log-orm'
+

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: event-log
+  datasource:
+    password: ${DATASOURCE_PASSWORD:example}
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${DATASOURCE_USERNAME:postgres}
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: db/changelog/changelog-master.yaml
+
+event-log:
+  api:
+    url: ${EVENT_LOG_URL:http://localhost:8092}
