@@ -127,15 +127,12 @@ dependencies {
     api(project(":event-log-orm"))
 }
 
-
 project(":event-log-models") {
     dependencies {
         api 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
     }
 }
-
-
 
 project(":event-log-orm") {
     apply plugin: 'org.liquibase.gradle'

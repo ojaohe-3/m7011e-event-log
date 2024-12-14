@@ -1,0 +1,9 @@
+// Fixes gradle bugs
+
+task wrapper(type: Wrapper){
+    gradleVersion = '8.10.2'
+}
+
+task prepareKotlinBuildScriptModel {
+
+}
