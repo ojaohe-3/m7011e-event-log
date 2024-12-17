@@ -107,11 +107,12 @@ allprojects {
 }
 
 dependencies {
+    implementation platform(group: 'm7011e.the-homeric-odyssey', name: 'common-dependencies', version: '0.1.0')
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-security'
-
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
 
@@ -136,6 +137,7 @@ project(":event-log-models") {
 
 project(":event-log-orm") {
     apply plugin: 'org.liquibase.gradle'
+    apply plugin: 'org.hibernate.orm'
 
     configurations {
         liquibase
@@ -145,6 +147,13 @@ project(":event-log-orm") {
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
         implementation 'org.liquibase:liquibase-core'
         api(project(":event-log-models"))
+
+        runtimeOnly 'org.postgresql:postgresql'
+        liquibaseRuntime 'org.liquibase:liquibase-core:4.24.0'
+        liquibaseRuntime 'org.liquibase:liquibase-groovy-dsl:2.1.1'
+        liquibaseRuntime 'info.picocli:picocli:4.7.5'
+        liquibaseRuntime 'org.yaml:snakeyaml:2.0'
+        liquibaseRuntime 'org.postgresql:postgresql'
     }
 }
 
