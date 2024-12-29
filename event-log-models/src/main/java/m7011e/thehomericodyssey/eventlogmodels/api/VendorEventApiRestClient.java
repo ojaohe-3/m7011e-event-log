@@ -8,6 +8,6 @@ import org.springframework.cloud.openfeign.FeignClient;
         path = "users",
         primary = false
 )
-public interface VendorEventApiRestClient {
+public interface VendorEventApiRestClient extends VendorEventApi {
 
 }
