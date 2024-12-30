@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1735570445199-3
+      author: Johan-laptop
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - indexExists:
+                indexName: idx_created_at
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: created_at
+            indexName: idx_created_at
+            tableName: vendor_event
+  - changeSet:
+      id: 1735570445199-5
+      author: Johan-laptop
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - indexExists:
+                indexName: idx_issuer_user_id
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: issuer_user_id
+            indexName: idx_issuer_user_id
+            tableName: vendor_event
+  - changeSet:
+      id: 1735570445199-6
+      author: Johan-laptop
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - indexExists:
+                indexName: idx_fk_vendor_event_id
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: vendor_event_id
+            indexName: idx_fk_vendor_event_id
+            tableName: metadata
+

@@ -1,0 +1,104 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1735567606670-1
+      author: Johan-laptop
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: metadata
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_metadata
+                  name: id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: version
+                  type: INT
+              - column:
+                  name: created_at
+                  type: DATETIME
+              - column:
+                  name: updated_at
+                  type: DATETIME
+              - column:
+                  name: value
+                  type: VARCHAR(2048)
+              - column:
+                  name: vendor_event_id
+                  type: UUID
+            tableName: metadata
+  - changeSet:
+      id: 1735567606670-2
+      author: Johan-laptop
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: vendor_event
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_vendor_event
+                  name: id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: version
+                  type: INT
+              - column:
+                  name: created_at
+                  type: DATETIME
+              - column:
+                  name: updated_at
+                  type: DATETIME
+              - column:
+                  name: issuer_user_id
+                  type: UUID
+              - column:
+                  name: issuer_username
+                  type: VARCHAR(255)
+              - column:
+                  name: event_message
+                  type: VARCHAR(255)
+              - column:
+                  name: event_type
+                  type: SMALLINT
+              - column:
+                  name: target_user_id
+                  type: UUID
+              - column:
+                  name: target_product_id
+                  type: UUID
+            tableName: vendor_event
+  - changeSet:
+      id: 1735567606670-3
+      author: Johan-laptop
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - foreignKeyConstraintExists:
+                tableName: vendor_event
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: vendor_event_id
+            baseTableName: metadata
+            constraintName: FK_METADATA_ON_VENDOR_EVENT
+            referencedColumnNames: id
+            referencedTableName: vendor_event
+

@@ -5,19 +5,29 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Table(name = "metadata")
+@Table(name = "metadata",
+indexes = {
+        @Index(name = "idx_fk_vendor_event_id", columnList = "vendor_event_id")
+})
 @Entity
 @Data
-public class MetaDataDb {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class  MetaDataDb {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;

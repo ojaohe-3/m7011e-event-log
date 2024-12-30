@@ -7,14 +7,15 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import java.util.UUID;
 import m7011e.the_homeric_odyssey.resource_server.exceptions.ErrorMessage;
 import m7011e.thehomericodyssey.eventlogmodels.models.VendorEvent;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
-
+@Tag(name = "Events")
 public interface VendorEventApi {
 
   @PostMapping
