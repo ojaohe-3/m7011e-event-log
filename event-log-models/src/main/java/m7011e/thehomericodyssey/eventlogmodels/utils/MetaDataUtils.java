@@ -1,5 +1,7 @@
 package m7011e.thehomericodyssey.eventlogmodels.utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import io.swagger.v3.core.util.ObjectMapperFactory;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.experimental.UtilityClass;
@@ -17,5 +19,9 @@ public class MetaDataUtils {
       metaDataSet.add(metaData);
     }
     return metaDataSet;
+  }
+
+  public String javaObjectToString(Object object) throws JsonProcessingException {
+    return ObjectMapperFactory.buildStrictGenericObjectMapper().writeValueAsString(object);
   }
 }
