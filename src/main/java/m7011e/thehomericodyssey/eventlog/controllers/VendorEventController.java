@@ -27,7 +27,7 @@ public class VendorEventController implements VendorEventApi {
   private final EventService eventService;
 
   @Override
-  @PreAuthorize("hasAnyRole()")
+  @PreAuthorize("hasAnyRole(SYSTEM)")
   public ResponseEntity<VendorEvent> updateEvent(
       @PathVariable @Parameter(description = "Event ID", required = true) UUID id,
       @RequestHeader("If-Match")
@@ -40,6 +40,7 @@ public class VendorEventController implements VendorEventApi {
   }
 
   @Override
+  @PreAuthorize("hasAnyRole(SYSTEM)")
   public ResponseEntity<VendorEvent> createEvent(
       @Valid @RequestBody @Parameter(description = "Vendor event to create", required = true)
           VendorEvent event) {
@@ -48,6 +49,7 @@ public class VendorEventController implements VendorEventApi {
   }
 
   @Override
+  @PreAuthorize("hasAnyRole(SYSTEM)")
   public ResponseEntity<Void> deleteEvent(
       @PathVariable @Parameter(description = "Event ID to delete", required = true) UUID id) {
     eventService.deleteEvent(id);
