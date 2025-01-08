@@ -3,9 +3,9 @@ package m7011e.thehomericodyssey.eventlogmodels.api;
 import org.springframework.cloud.openfeign.FeignClient;
 
 @FeignClient(
-        name = "registry",
+        name = "event-log",
         url = "${event-log.api.url}",
-        path = "users",
+        path = "vendor-events",
         primary = false
 )
 public interface VendorEventApiRestClient extends VendorEventApi {
